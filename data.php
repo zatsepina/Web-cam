@@ -381,14 +381,13 @@
   ),
 );
 
-$x = 99999;
-$y = '';
+$minPrice = 99999;
+$photoMinPrice = '';
 
-foreach ($data as $key )
-{
-	if ($key['prices']['amount'] < $x)
-	{$x = $key['prices']['amount'];
-	 $y = $key['mainPhoto']['url'];
+foreach ($data as $key ) {
+	if ($key['prices']['amount'] < $minPrice){
+		$minPrice = $key['prices']['amount'];
+		$photoMinPrice = $key['mainPhoto']['url'];
 	}
 }
 
@@ -396,8 +395,8 @@ foreach ($data as $key )
 
 <table>
 <tr>
-<td>Самая дешёвая камера</td>
-<td><img src = "<?php echo $y; ?>" align = "middle"></td>
+<td><h1>Самая дешёвая камера</h1></td>
+<td><img src = "<?php echo $photoMinPrice; ?>" align = "middle" height = "600" width="400"></td>
 </tr>
 </table>
 
@@ -416,13 +415,12 @@ usort($data, myCmp);
 <table border="1">
 <?php foreach($data as $val) : ?>
 <tr>
-<td align="center"><?php echo $val['vendor']; ?></td>
-<td align="center"><?php echo $val['name']; ?></td>
-<td align="center"><?php echo $val['description']; ?></td>
-<td align="center"><img src = "<?php echo $val['mainPhoto']['url']; ?>" height = "<?php echo $val['mainPhoto']['height']; ?>" width="<?php echo $val['mainPhoto']['width']; ?>" align = "middle"></td>
-<td align="center"><?php echo $val['rating']; ?></td>
-<td align="center"><?php echo $val['prices']['amount']; ?></td>
-<td align="center"><?php echo $val['prices']['curCode']; ?></td>
+<td align="center"><?php echo  htmlspecialchars($val['vendor'], ENT_QUOTES);  ?></td>
+<td align="center"><?php echo  htmlspecialchars($val['name'], ENT_QUOTES);  ?></td>
+<td align="center"><?php echo  htmlspecialchars($val['description'], ENT_QUOTES); ?></td>
+<td align="center"><img src = "<?php echo $val['mainPhoto']['url']; ?>" height = "600" width="400" align = "middle"></td>
+<td align="center"><?php echo  htmlspecialchars(number_format ($val['prices']['amount'] , 0 , '.' , ' ' ), ENT_QUOTES); ?></td>
+<td align="center"><?php echo  htmlspecialchars($val['prices']['curCode'], ENT_QUOTES); ?></td>
 </tr>
 <?php endforeach; ?>
 </table>
