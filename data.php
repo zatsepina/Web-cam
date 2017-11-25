@@ -396,7 +396,7 @@ foreach ($data as $key ) {
 <table>
 <tr>
 <td><h1>Самая дешёвая камера</h1></td>
-<td><img src = "<?php echo $photoMinPrice; ?>" align = "middle" height = "600" width="400"></td>
+<td><img src = "<?php echo $photoMinPrice; ?>" align = "middle" height = "600"></td>
 </tr>
 </table>
 
@@ -418,7 +418,7 @@ usort($data, myCmp);
 <td align="center"><?php echo  htmlspecialchars($val['vendor'], ENT_QUOTES);  ?></td>
 <td align="center"><?php echo  htmlspecialchars($val['name'], ENT_QUOTES);  ?></td>
 <td align="center"><?php echo  htmlspecialchars($val['description'], ENT_QUOTES); ?></td>
-<td align="center"><img src = "<?php echo $val['mainPhoto']['url']; ?>" height = "600" width="400" align = "middle"></td>
+<td align="center"><img src = "<?php echo htmlspecialchars($val['mainPhoto']['url'], ENT_QUOTES) ; ?>" height = "600" align = "middle"></td>
 <td align="center"><?php echo  htmlspecialchars(number_format ($val['prices']['amount'] , 0 , '.' , ' ' ), ENT_QUOTES); ?></td>
 <td align="center"><?php echo  htmlspecialchars($val['prices']['curCode'], ENT_QUOTES); ?></td>
 </tr>
