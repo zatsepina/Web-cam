@@ -409,7 +409,7 @@ function myCmp($a, $b)
    return strcasecmp($a['rating'], $b['rating']) > 0 ? -1 : 1;
 }
 
-usort($data, myCmp);
+usort($data, 'myCmp');
 ?>
 
 <table border="1">
